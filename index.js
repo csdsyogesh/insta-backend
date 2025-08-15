@@ -33,8 +33,9 @@ app.post('/books', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
-
-
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
 app.listen(9000, () => {
   console.log(' Server is live on port 9000');
 });
