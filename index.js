@@ -9,7 +9,9 @@ const app = express();
 
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin :'http://insta-follower-tawny.vercel.app/'
+}));
 
 
 connectDB();
@@ -33,9 +35,6 @@ app.post('/books', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
-app.get('/', (req, res) => {
-  res.send('Backend is running!');
-});
-app.listen(9000, () => {
-  console.log(' Server is live on port 9000');
-});
+
+// Export the Express app for Vercel serverless functions:
+module.exports = app;
